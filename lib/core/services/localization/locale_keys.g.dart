@@ -2,5 +2,6 @@
 
 abstract class  LocaleKeys {
   static const test = 'test';
+  static const hi = 'hi';
 
 }

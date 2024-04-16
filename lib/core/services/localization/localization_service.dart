@@ -1,9 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/widgets.dart';
 import 'package:shopink/core/services/localization/locales.dart';
+
 import 'codegen_loader.g.dart';
 
-abstract final class LocalizationService {
+sealed class LocalizationService {
   static Future<void> init() async {
     await EasyLocalization.ensureInitialized();
   }
@@ -12,7 +13,7 @@ abstract final class LocalizationService {
     return EasyLocalization(
       saveLocale: true,
       supportedLocales: const [Locales.english, Locales.arabic],
-      path: 'assets/localization',
+      path: 'lib/core/services/localization/translations',
       fallbackLocale: Locales.english,
       assetLoader: const CodegenLoader(),
       child: child,
