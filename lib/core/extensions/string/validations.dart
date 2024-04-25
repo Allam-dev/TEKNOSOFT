@@ -4,9 +4,15 @@ extension Validations on String {
         .hasMatch(this);
   }
 
-  bool isPassword() {
+  bool isPassword({
+    int minLength = 8,
+    int numberOfDigits = 1,
+    int numberOfSpecialCharacters = 1,
+    int numberOfUppercase = 1,
+    int numberOfLowercase = 1,
+  }) {
     return RegExp(
-            r'^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*()\-_+.]){1,}).{8,}$')
+            '^(?=(.*[a-z]){$numberOfLowercase,})(?=(.*[A-Z]){$numberOfUppercase,})(?=(.*[0-9]){$numberOfDigits,})(?=(.*[!@#\$%^&*()\\-_+.]){$numberOfSpecialCharacters,}).{$minLength,}\$')
         .hasMatch(this);
   }
 }
