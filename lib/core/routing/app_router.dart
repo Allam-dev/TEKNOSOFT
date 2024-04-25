@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopink/core/di/dependency_injection.dart';
+import 'package:shopink/features/home/ui/home_screen.dart';
+import 'package:shopink/features/login/logic/cubit/login_cubit.dart';
 import 'package:shopink/features/login/ui/login_screen.dart';
 import 'package:shopink/features/signup/ui/signup_screen.dart';
+import 'package:shopink/features/splash/cubit/splash_cubit.dart';
 import 'package:shopink/features/splash/splash.dart';
-import 'package:shopink/tests_screen.dart';
 
 import 'routes.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
-
       case Routes.splashRoute:
         return MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => SplashCubit(),
+            child: const SplashScreen(),
+          ),
         );
 
       case Routes.registerRoute:
@@ -22,11 +28,16 @@ class AppRouter {
 
       case Routes.loginRoute:
         return MaterialPageRoute(
-          builder: (context) => const LoginScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<LoginCubit>(),
+            child: const LoginScreen(),
+          ),
         );
 
-      case Routes.testsRoute:
-        return MaterialPageRoute(builder: (context) => const TestsScreen());
+      case Routes.homeRoute:
+        return MaterialPageRoute(
+          builder: (context) => const HomeScreen(),
+        );
 
       default:
         return MaterialPageRoute(

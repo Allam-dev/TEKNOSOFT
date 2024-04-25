@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "274202204563",
+    "project_id": "shoppingo-4ce70",
+    "storage_bucket": "shoppingo-4ce70.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274202204563:android:2fd5881d3998f976b97066",
+        "android_client_info": {
+          "package_name": "com.example.shopink"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZcYzBLdfcHhfysLd9qNDwc2sD1CCP8uk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,22 @@
+{
+    "somethingWrongHappend": "Something wrong happened",
+    "ok": "OK",
+    "cancel": "Cancel",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning",
+    "emailAlreadyInUse":"The account already exists for that email",
+    "userNotFound":"User not found",
+    "wrongPassword":"Wrong password",
+    "welcome": "Welcome",
+    "signInToContinue": "Sign in to continue",
+    "signUp": "Sign up",
+    "singIn": "Sign in",
+    "or": "or",
+    "forgotPassword": "Forgot password?",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "name": "Name",
+    "phone": "Phone"
+}

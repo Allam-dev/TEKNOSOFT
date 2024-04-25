@@ -15,12 +15,48 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> ar = {
-  "test": "اختبار",
-  "hi": "مرحبا {}"
+  "somethingWrongHappend": "حدث خطأ ما",
+  "ok": "موافق",
+  "cancel": "إلغاء",
+  "error": "خطأ",
+  "success": "نجاح",
+  "warning": "تحذير",
+  "emailAlreadyInUse": "هذا البريد الإلكتروني مستخدم من قبل",
+  "userNotFound": "المستخدم غير موجود",
+  "wrongPassword": "كلمة المرور خاطئة",
+  "welcome": "مرحباً",
+  "signInToContinue": "تسجيل الدخول للمتابعة",
+  "signUp": "تسجيل",
+  "singIn": "تسجيل الدخول",
+  "or": "أو",
+  "forgotPassword": "نسيت كلمة المرور؟",
+  "email": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "name": "الاسم",
+  "phone": "رقم الهاتف"
 };
 static const Map<String,dynamic> en = {
-  "test": "test",
-  "hi": "hi {}"
+  "somethingWrongHappend": "Something wrong happened",
+  "ok": "OK",
+  "cancel": "Cancel",
+  "error": "Error",
+  "success": "Success",
+  "warning": "Warning",
+  "emailAlreadyInUse": "The account already exists for that email",
+  "userNotFound": "User not found",
+  "wrongPassword": "Wrong password",
+  "welcome": "Welcome",
+  "signInToContinue": "Sign in to continue",
+  "signUp": "Sign up",
+  "singIn": "Sign in",
+  "or": "or",
+  "forgotPassword": "Forgot password?",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm password",
+  "name": "Name",
+  "phone": "Phone"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }

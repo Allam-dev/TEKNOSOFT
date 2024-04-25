@@ -1,0 +1,22 @@
+{
+    "somethingWrongHappend": "حدث خطأ ما",
+    "ok": "موافق",
+    "cancel": "إلغاء",
+    "error": "خطأ",
+    "success": "نجاح",
+    "warning": "تحذير",
+    "emailAlreadyInUse":"هذا البريد الإلكتروني مستخدم من قبل",
+    "userNotFound":"المستخدم غير موجود",
+    "wrongPassword":"كلمة المرور خاطئة",
+    "welcome": "مرحباً",
+    "signInToContinue": "تسجيل الدخول للمتابعة",
+    "signUp": "تسجيل",
+    "singIn": "تسجيل الدخول",
+    "or": "أو",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "name": "الاسم",
+    "phone": "رقم الهاتف"
+}

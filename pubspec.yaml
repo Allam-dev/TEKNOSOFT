@@ -40,8 +40,25 @@ dependencies:
   # Automatically generate code for converting to and from JSON by annotating Dart classes.
   json_serializable: ^6.7.1
   json_annotation: ^4.8.1
+  # A Dart package that helps to implement value based equality without needing to explicitly override == and hashCode.
+  equatable: ^2.0.5
   # Easy and Fast internationalizing and localization your Flutter Apps and save locale automatically
   easy_localization: ^3.0.5
+  # Flutter widgets for easily adding gaps inside Flex widgets such as Columns and Rows or scrolling views. 
+  gap: ^3.0.1
+  # A flutter plugin for adapting screen and font size.
+  flutter_screenutil: ^5.9.0
+  # Firebase
+  firebase_core: ^2.30.0
+  firebase_auth: ^4.19.2
+  cloud_firestore: ^4.17.0
+  firebase_storage: ^11.7.2
+  # Functional Programming in Dart. Purify your Dart code using efficient immutable data structures, monads, lenses and other FP tools.
+  dartz: ^0.10.1
+  # Dependency injection.
+  get_it: ^7.7.0
+  
+  
   
   
 
@@ -98,11 +115,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo-Regular.ttf
+
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
