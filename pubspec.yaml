@@ -57,6 +57,9 @@ dependencies:
   dartz: ^0.10.1
   # Dependency injection.
   get_it: ^7.7.0
+  # Prints beautiful logs.
+  logger: ^2.2.0
+  google_sign_in: ^6.2.1
   
   
   

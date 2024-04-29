@@ -21,5 +21,13 @@ abstract class  LocaleKeys {
   static const confirmPassword = 'confirmPassword';
   static const name = 'name';
   static const phone = 'phone';
+  static const invalid = 'invalid';
+  static const wrongEmailOrPassword = 'wrongEmailOrPassword';
+  static const resetPassword = 'resetPassword';
+  static const signInWithGoogle = 'signInWithGoogle';
+  static const noAccount = 'noAccount';
+  static const createOne = 'createOne';
+  static const noInternetConnection = 'noInternetConnection';
+  static const youShouldSelectGoogleAccount = 'youShouldSelectGoogleAccount';
 
 }

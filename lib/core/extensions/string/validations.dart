@@ -1,7 +1,6 @@
 extension Validations on String {
   bool isEmail() {
-    return RegExp(r'^([a-zA-Z0-9\._\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z]{2,})$')
-        .hasMatch(this);
+    return RegExp(r'^[\w\-\.]+@[A-z0-9\-]+\.[A-z]{2,}$').hasMatch(this);
   }
 
   bool isPassword({

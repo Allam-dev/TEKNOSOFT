@@ -18,5 +18,13 @@
     "password": "كلمة المرور",
     "confirmPassword": "تأكيد كلمة المرور",
     "name": "الاسم",
-    "phone": "رقم الهاتف"
+    "phone": "رقم الهاتف",
+    "invalid": "غير صالح",
+    "wrongEmailOrPassword": "خطأ في البريد الإلكتروني أو كلمة المرور",
+    "resetPassword": "إعادة تعيين كلمة المرور",
+    "signInWithGoogle": "تسجيل الدخول بواسطة جوجل",
+    "noAccount": "ليس لديك حساب؟",
+    "createOne": "إنشاء حساب",
+    "noInternetConnection": "لا يوجد اتصال بالإنترنت",
+    "youShouldSelectGoogleAccount": "يجب تحديد حساب جوجل"
 }

@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,6 +10,9 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: const Placeholder(),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        FirebaseAuth.instance.signOut();
+      },),
     );
   }
 }

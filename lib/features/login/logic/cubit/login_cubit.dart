@@ -15,12 +15,26 @@ class LoginCubit extends Cubit<LoginState> {
   final TextEditingController passwordController = TextEditingController();
 
   Future<void> loginWithEmailAndPassword() async {
-    emit(LoginLoading());
-    final result = await loginRepo.loginWithEmailAndPassword(
+    if (formKey.currentState!.validate()) {
+      emit(LoginLoading());
+      final result = await loginRepo.loginWithEmailAndPassword(
         LoginWithEmailAndPasswordParameter(
-            email: emailController.text, password: passwordController.text));
+            email: emailController.text, password: passwordController.text),
+      );
 
-    result.fold((failure) => emit(LoginError(failure.userMessage)),
-        (r) => emit(LoginSuccess()));
+      result.fold(
+        (failure) => emit(LoginError(failure.message)),
+        (r) => emit(LoginSuccess()),
+      );
+    }
+  }
+
+  Future<void> loginWithGoogle() async {
+    emit(LoginLoading());
+    final result = await loginRepo.loginWithGoogle();
+    result.fold(
+      (failure) => emit(LoginError(failure.message)),
+      (r) => emit(LoginSuccess()),
+    );
   }
 }

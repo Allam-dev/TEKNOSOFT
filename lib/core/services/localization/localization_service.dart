@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:shopink/core/services/localization/codegen_loader.g.dart';
 import 'package:shopink/core/services/localization/locales.dart';
 
-sealed class LocalizationService {
+abstract interface class LocalizationService {
   static Future<void> init() async {
     await EasyLocalization.ensureInitialized();
   }

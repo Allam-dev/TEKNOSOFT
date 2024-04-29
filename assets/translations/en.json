@@ -18,5 +18,14 @@
     "password": "Password",
     "confirmPassword": "Confirm password",
     "name": "Name",
-    "phone": "Phone"
+    "phone": "Phone",
+    "invalid": "Invalid",
+    "wrongEmailOrPassword": "Wrong email or password",
+    "resetPassword": "Reset password",
+    "signInWithGoogle": "Sign in with Google",
+    "noAccount": "Don't have an account?",
+    "createOne": "Create one",
+    "noInternetConnection": "No internet connection",
+    "youShouldSelectGoogleAccount": "You should select Google account"
+    
 }

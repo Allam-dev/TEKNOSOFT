@@ -34,7 +34,15 @@ class CodegenLoader extends AssetLoader{
   "password": "كلمة المرور",
   "confirmPassword": "تأكيد كلمة المرور",
   "name": "الاسم",
-  "phone": "رقم الهاتف"
+  "phone": "رقم الهاتف",
+  "invalid": "غير صالح",
+  "wrongEmailOrPassword": "خطأ في البريد الإلكتروني أو كلمة المرور",
+  "resetPassword": "إعادة تعيين كلمة المرور",
+  "signInWithGoogle": "تسجيل الدخول بواسطة جوجل",
+  "noAccount": "ليس لديك حساب؟",
+  "createOne": "إنشاء حساب",
+  "noInternetConnection": "لا يوجد اتصال بالإنترنت",
+  "youShouldSelectGoogleAccount": "يجب تحديد حساب جوجل"
 };
 static const Map<String,dynamic> en = {
   "somethingWrongHappend": "Something wrong happened",
@@ -56,7 +64,15 @@ static const Map<String,dynamic> en = {
   "password": "Password",
   "confirmPassword": "Confirm password",
   "name": "Name",
-  "phone": "Phone"
+  "phone": "Phone",
+  "invalid": "Invalid",
+  "wrongEmailOrPassword": "Wrong email or password",
+  "resetPassword": "Reset password",
+  "signInWithGoogle": "Sign in with Google",
+  "noAccount": "Don't have an account?",
+  "createOne": "Create one",
+  "noInternetConnection": "No internet connection",
+  "youShouldSelectGoogleAccount": "You should select Google account"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }
