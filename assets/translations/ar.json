@@ -26,5 +26,12 @@
     "noAccount": "ليس لديك حساب؟",
     "createOne": "إنشاء حساب",
     "noInternetConnection": "لا يوجد اتصال بالإنترنت",
-    "youShouldSelectGoogleAccount": "يجب تحديد حساب جوجل"
+    "youShouldSelectGoogleAccount": "يجب تحديد حساب جوجل",
+    "signout": "تسجيل الخروج",
+    "atLeast": "على الأقل - حرف",
+    "normalLetters": "- حرف",
+    "uppercaseLetters": "- حرف كبير",
+    "lowercaseLetters": "- حرف صغير",
+    "numericCharacters": "- رقم",
+    "specialCharacters": "- رمز"
 }

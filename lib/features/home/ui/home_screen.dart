@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,10 +9,13 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Placeholder(),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        FirebaseAuth.instance.signOut();
-      },),
+      body: Center(child: Text(FirebaseAuth.instance.currentUser.toString()),),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          FirebaseAuth.instance.signOut();
+          GoogleSignIn().signOut();
+        },
+      ),
     );
   }
 }

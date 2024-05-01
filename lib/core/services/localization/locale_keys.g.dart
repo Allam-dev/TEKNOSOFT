@@ -29,5 +29,12 @@ abstract class  LocaleKeys {
   static const createOne = 'createOne';
   static const noInternetConnection = 'noInternetConnection';
   static const youShouldSelectGoogleAccount = 'youShouldSelectGoogleAccount';
+  static const signout = 'signout';
+  static const atLeast = 'atLeast';
+  static const normalLetters = 'normalLetters';
+  static const uppercaseLetters = 'uppercaseLetters';
+  static const lowercaseLetters = 'lowercaseLetters';
+  static const numericCharacters = 'numericCharacters';
+  static const specialCharacters = 'specialCharacters';
 
 }

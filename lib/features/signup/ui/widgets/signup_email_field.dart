@@ -1,27 +1,22 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopink/core/extensions/string/validations.dart';
 import 'package:shopink/core/services/localization/locale_keys.g.dart';
 import 'package:shopink/features/signup/logic/cubit/signup_cubit.dart';
 
-class SignupNameField extends StatelessWidget {
-  const SignupNameField({super.key});
+class SignupEmailField extends StatelessWidget {
+  const SignupEmailField({super.key});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: context.read<SignupCubit>().nameController,
-      keyboardType: TextInputType.name,
+      controller: context.read<SignupCubit>().emailController,
+      keyboardType: TextInputType.emailAddress,
       textInputAction: TextInputAction.next,
-      validator: (value) {
-        if (value == null || value.isEmpty || value.length < 3) {
-          return LocaleKeys.invalid.tr();
-        } else {
-          return null;
-        }
-      },
+      validator: (value) => value!.isEmail() ? null : LocaleKeys.invalid.tr(),
       decoration: InputDecoration(
-        hintText: LocaleKeys.name.tr(),
+        hintText: LocaleKeys.email.tr(),
       ),
     );
   }

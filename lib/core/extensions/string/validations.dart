@@ -3,15 +3,17 @@ extension Validations on String {
     return RegExp(r'^[\w\-\.]+@[A-z0-9\-]+\.[A-z]{2,}$').hasMatch(this);
   }
 
-  bool isPassword({
-    int minLength = 8,
-    int numberOfDigits = 1,
-    int numberOfSpecialCharacters = 1,
-    int numberOfUppercase = 1,
-    int numberOfLowercase = 1,
-  }) {
+  bool isPassword() {
     return RegExp(
-            '^(?=(.*[a-z]){$numberOfLowercase,})(?=(.*[A-Z]){$numberOfUppercase,})(?=(.*[0-9]){$numberOfDigits,})(?=(.*[!@#\$%^&*()\\-_+.]){$numberOfSpecialCharacters,}).{$minLength,}\$')
+            '^(?=(.*[a-z]){${PasswordValidationConditions.numberOfLowercase},})(?=(.*[A-Z]){${PasswordValidationConditions.numberOfUppercase},})(?=(.*[0-9]){${PasswordValidationConditions.numberOfDigits},})(?=(.*[!@#\$%^&*()\\-_+.]){${PasswordValidationConditions.numberOfSpecialCharacters},}).{${PasswordValidationConditions.minLength},}\$')
         .hasMatch(this);
   }
+}
+
+abstract class PasswordValidationConditions {
+  static const int minLength = 8;
+  static const int numberOfDigits = 1;
+  static const int numberOfSpecialCharacters = 1;
+  static const int numberOfUppercase = 1;
+  static const int numberOfLowercase = 1;
 }

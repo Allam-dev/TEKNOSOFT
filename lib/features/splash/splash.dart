@@ -9,20 +9,25 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<SplashCubit, SplashState>(
-      listener: (context, state) {
-        if (state is SplashLoggedin) {
-          context.pushReplacementNamed(Routes.homeRoute);
-        } else if (state is SplashLoggedOut) {
-          context.pushReplacementNamed(Routes.loginRoute);
-        }
-      },
+    return BlocProvider(
+      create: (context) => SplashCubit(),
       child: Builder(builder: (context) {
-        context.read<SplashCubit>().checkLoginStatus();
-        return const SafeArea(
-            child: Center(
-          child: CircularProgressIndicator.adaptive(),
-        ));
+        return BlocListener<SplashCubit, SplashState>(
+          listener: (context, state) {
+            if (state is SplashLoggedin) {
+              context.pushReplacementNamed(Routes.mainLayoutRoute);
+            } else if (state is SplashLoggedOut) {
+              context.pushReplacementNamed(Routes.loginRoute);
+            }
+          },
+          child: Builder(builder: (context) {
+            context.read<SplashCubit>().checkLoginStatus();
+            return const SafeArea(
+                child: Center(
+              child: CircularProgressIndicator.adaptive(),
+            ));
+          }),
+        );
       }),
     );
   }

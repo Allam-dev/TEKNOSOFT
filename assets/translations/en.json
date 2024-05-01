@@ -5,9 +5,9 @@
     "error": "Error",
     "success": "Success",
     "warning": "Warning",
-    "emailAlreadyInUse":"The account already exists for that email",
-    "userNotFound":"User not found",
-    "wrongPassword":"Wrong password",
+    "emailAlreadyInUse": "The account already exists for that email",
+    "userNotFound": "User not found",
+    "wrongPassword": "Wrong password",
     "welcome": "Welcome",
     "signInToContinue": "Sign in to continue",
     "signUp": "Sign up",
@@ -26,6 +26,12 @@
     "noAccount": "Don't have an account?",
     "createOne": "Create one",
     "noInternetConnection": "No internet connection",
-    "youShouldSelectGoogleAccount": "You should select Google account"
-    
+    "youShouldSelectGoogleAccount": "You should select Google account",
+    "signout": "Sign out",
+    "atLeast": "At least - character",
+    "normalLetters": "- Letter",
+    "uppercaseLetters": "- Uppercase letter",
+    "lowercaseLetters": "- Lowercase letter",
+    "numericCharacters": "- Numeric character",
+    "specialCharacters": "- Special character"
 }
