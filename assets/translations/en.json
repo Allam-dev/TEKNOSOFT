@@ -33,5 +33,15 @@
     "uppercaseLetters": "- Uppercase letter",
     "lowercaseLetters": "- Lowercase letter",
     "numericCharacters": "- Numeric character",
-    "specialCharacters": "- Special character"
+    "specialCharacters": "- Special character",
+    "noProducts": "No products found",
+    "epg":"EPG",
+    "electronics":"electronics",
+    "jewelery":"jewelery",
+    "menClothing":"men's clothing",
+    "womenClothing":"women's clothing",
+    "home":"Home",
+    "categories":"Categories",
+    "products":"Products",
+    "all":"All"
 }

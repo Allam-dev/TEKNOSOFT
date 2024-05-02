@@ -8,8 +8,20 @@ abstract interface class TextStyles {
     color: Colors.black,
   );
 
+  static TextStyle font20BlackBold = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+  );
+
   static TextStyle font17BlackNormal = TextStyle(
     fontSize: 17.sp,
+    fontWeight: FontWeight.normal,
+    color: Colors.black,
+  );
+
+  static TextStyle font15BlackNormal = TextStyle(
+    fontSize: 15.sp,
     fontWeight: FontWeight.normal,
     color: Colors.black,
   );
@@ -20,6 +32,12 @@ abstract interface class TextStyles {
     fontSize: 15.sp,
     fontWeight: FontWeight.normal,
     color: Colors.grey,
+  );
+
+  static TextStyle font15GreenNormal = TextStyle(
+    fontSize: 15.sp,
+    fontWeight: FontWeight.normal,
+    color: Colors.green,
   );
 
   static TextStyle font15BlueNormal = TextStyle(

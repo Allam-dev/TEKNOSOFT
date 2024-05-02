@@ -5,7 +5,7 @@ import 'package:shopink/core/data/source/remote/firebase/firebase_error_handler.
 import 'package:shopink/core/services/localization/locale_keys.g.dart';
 
 class Failure {
-  final Object? exception;
+  final dynamic exception;
   String _userMessage = '';
   Failure({this.exception, String userMessage = ''}) {
     if (userMessage.isEmpty) {
@@ -15,7 +15,7 @@ class Failure {
     }
   }
 
-  String _exceptionMasseageMapper(Object? exception) {
+  String _exceptionMasseageMapper(dynamic exception) {
     if (exception is FirebaseException) {
       return FirebaseExceptionHandler.handle(exception);
     } else if (exception is SocketException) {

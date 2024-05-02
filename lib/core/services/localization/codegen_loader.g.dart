@@ -49,7 +49,17 @@ class CodegenLoader extends AssetLoader{
   "uppercaseLetters": "- حرف كبير",
   "lowercaseLetters": "- حرف صغير",
   "numericCharacters": "- رقم",
-  "specialCharacters": "- رمز"
+  "specialCharacters": "- رمز",
+  "noProducts": "لا يوجد منتجات",
+  "epg": "جنية",
+  "electronics": "إلكترونيات",
+  "jewelery": "مجهورات",
+  "menClothing": "ملابس رجالي",
+  "womenClothing": "ملابس حريمي",
+  "home": "الرئيسية",
+  "categories": "الفئات",
+  "products": "المنتجات",
+  "all": "الكل"
 };
 static const Map<String,dynamic> en = {
   "somethingWrongHappend": "Something wrong happened",
@@ -86,7 +96,17 @@ static const Map<String,dynamic> en = {
   "uppercaseLetters": "- Uppercase letter",
   "lowercaseLetters": "- Lowercase letter",
   "numericCharacters": "- Numeric character",
-  "specialCharacters": "- Special character"
+  "specialCharacters": "- Special character",
+  "noProducts": "No products found",
+  "epg": "EPG",
+  "electronics": "electronics",
+  "jewelery": "jewelery",
+  "menClothing": "men's clothing",
+  "womenClothing": "women's clothing",
+  "home": "Home",
+  "categories": "Categories",
+  "products": "Products",
+  "all": "All"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }

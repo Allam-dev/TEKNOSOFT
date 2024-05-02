@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopink/core/ui/theming/color_manager.dart';
 import 'package:shopink/features/home/ui/home_screen.dart';
 
 class MainLayout extends StatefulWidget {

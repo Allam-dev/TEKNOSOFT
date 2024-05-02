@@ -26,8 +26,12 @@ class $AssetsImagesGen {
   AssetGenImage get googleIc =>
       const AssetGenImage('assets/images/google_ic.png');
 
+  /// File path: assets/images/placeholder.png
+  AssetGenImage get placeholder =>
+      const AssetGenImage('assets/images/placeholder.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [googleIc];
+  List<AssetGenImage> get values => [googleIc, placeholder];
 }
 
 class Assets {

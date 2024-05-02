@@ -65,6 +65,7 @@ dependencies:
   # For Api calls
   dio: ^5.4.3+1
   retrofit: ^4.1.0
+  pretty_dio_logger: ^1.3.1
   
   
   

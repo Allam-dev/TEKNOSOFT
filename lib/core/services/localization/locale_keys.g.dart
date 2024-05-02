@@ -36,5 +36,15 @@ abstract class  LocaleKeys {
   static const lowercaseLetters = 'lowercaseLetters';
   static const numericCharacters = 'numericCharacters';
   static const specialCharacters = 'specialCharacters';
+  static const noProducts = 'noProducts';
+  static const epg = 'epg';
+  static const electronics = 'electronics';
+  static const jewelery = 'jewelery';
+  static const menClothing = 'menClothing';
+  static const womenClothing = 'womenClothing';
+  static const home = 'home';
+  static const categories = 'categories';
+  static const products = 'products';
+  static const all = 'all';
 
 }
