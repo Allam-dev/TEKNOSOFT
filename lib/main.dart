@@ -11,6 +11,5 @@ part 'init.dart';
 
 void main() async {
   await _initialization();
-
   runApp(LocalizationService.rootWidget(child: const ShopinkApp()));
 }

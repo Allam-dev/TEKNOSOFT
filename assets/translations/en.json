@@ -43,5 +43,6 @@
     "home":"Home",
     "categories":"Categories",
     "products":"Products",
-    "all":"All"
+    "all":"All",
+    "cart":"Cart"
 }

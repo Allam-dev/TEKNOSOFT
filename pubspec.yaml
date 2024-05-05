@@ -38,9 +38,7 @@ dependencies:
   # State Management
   flutter_bloc: ^8.1.5
   # Classes and helper functions that support JSON code generation via the `json_serializable` package.
-  json_annotation: ^4.8.1
-  # A Dart package that helps to implement value based equality without needing to explicitly override == and hashCode.
-  equatable: ^2.0.5
+  json_annotation: ^4.9.0
   # Easy and Fast internationalizing and localization your Flutter Apps and save locale automatically
   easy_localization: ^3.0.5
   # Flutter widgets for easily adding gaps inside Flex widgets such as Columns and Rows or scrolling views. 
@@ -70,6 +68,7 @@ dependencies:
   
   
   
+  
 
 dev_dependencies:
   flutter_test:
@@ -88,7 +87,8 @@ dev_dependencies:
   # dio client generator using source_gen and inspired by Chopper and Retrofit.
   retrofit_generator: ^8.1.0
   # Automatically generate code for converting to and from JSON by annotating Dart classes.
-  json_serializable: ^6.7.1
+  json_serializable: ^6.8.0
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

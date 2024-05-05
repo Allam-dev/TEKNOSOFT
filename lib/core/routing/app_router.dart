@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shopink/features/home/ui/home_screen.dart';
-import 'package:shopink/features/login/ui/login_screen.dart';
-import 'package:shopink/features/main/main_layout.dart';
-import 'package:shopink/features/signup/ui/signup_screen.dart';
-import 'package:shopink/features/splash/splash.dart';
+import 'package:shopink/layers/presentation/home/ui/home_screen.dart';
+import 'package:shopink/layers/presentation/login/ui/login_screen.dart';
+import 'package:shopink/layers/presentation/main/main_layout.dart';
+import 'package:shopink/layers/presentation/signup/ui/signup_screen.dart';
+import 'package:shopink/layers/presentation/splash/splash.dart';
 
 import 'routes.dart';
 
