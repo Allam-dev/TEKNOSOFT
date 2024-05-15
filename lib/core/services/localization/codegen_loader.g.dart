@@ -60,7 +60,10 @@ class CodegenLoader extends AssetLoader{
   "categories": "الفئات",
   "products": "المنتجات",
   "all": "الكل",
-  "cart": "السلة"
+  "cart": "السلة",
+  "total": "المجموع",
+  "count": "عدد",
+  "checkout": "حاسب"
 };
 static const Map<String,dynamic> en = {
   "somethingWrongHappend": "Something wrong happened",
@@ -108,7 +111,10 @@ static const Map<String,dynamic> en = {
   "categories": "Categories",
   "products": "Products",
   "all": "All",
-  "cart": "Cart"
+  "cart": "Cart",
+  "total": "Total",
+  "count": "Count",
+  "checkout": "Checkout"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }

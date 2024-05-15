@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopink/core/failures/logger.dart';
 import 'package:shopink/core/ui/assets/assets.gen.dart';
 
 class AppNetworkImage extends StatelessWidget {
@@ -57,30 +58,32 @@ class AppNetworkImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.network(
       src,
-      errorBuilder: (context, error, stackTrace) =>
-          Assets.images.placeholder.image(
-        width: width,
-        height: height,
-        color: color,
-        colorBlendMode: colorBlendMode,
-        fit: fit,
-        package: package,
-        filterQuality: filterQuality,
-        cacheWidth: cacheWidth,
-        cacheHeight: cacheHeight,
-        semanticLabel: semanticLabel,
-        opacity: opacity,
-        alignment: alignment,
-        repeat: repeat,
-        excludeFromSemantics: excludeFromSemantics,
-        centerSlice: centerSlice,
-        isAntiAlias: isAntiAlias,
-        matchTextDirection: matchTextDirection,
-        gaplessPlayback: gaplessPlayback,
-        frameBuilder: frameBuilder,
-        bundle: bundle,
-        scale: scale,
-      ),
+      errorBuilder: (context, error, stackTrace) {
+        Log.error("try to load image: $src \n${error.toString()}");
+        return Assets.images.placeholder.image(
+          width: width,
+          height: height,
+          color: color,
+          colorBlendMode: colorBlendMode,
+          fit: fit,
+          package: package,
+          filterQuality: filterQuality,
+          cacheWidth: cacheWidth,
+          cacheHeight: cacheHeight,
+          semanticLabel: semanticLabel,
+          opacity: opacity,
+          alignment: alignment,
+          repeat: repeat,
+          excludeFromSemantics: excludeFromSemantics,
+          centerSlice: centerSlice,
+          isAntiAlias: isAntiAlias,
+          matchTextDirection: matchTextDirection,
+          gaplessPlayback: gaplessPlayback,
+          frameBuilder: frameBuilder,
+          bundle: bundle,
+          scale: scale,
+        );
+      },
       loadingBuilder: (context, child, loadingProgress) {
         if (loadingProgress == null) return child;
         return Center(

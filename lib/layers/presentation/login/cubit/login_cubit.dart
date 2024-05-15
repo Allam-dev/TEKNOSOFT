@@ -5,8 +5,8 @@ import 'package:shopink/layers/domain/repositories/user_repo.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  final UserRepo _userRepo;
-  LoginCubit(this._userRepo) : super(LoginInitial());
+  final UserRepo userRepo;
+  LoginCubit({required this.userRepo}) : super(LoginInitial());
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
@@ -15,7 +15,7 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> loginWithEmailAndPassword() async {
     if (formKey.currentState!.validate()) {
       emit(LoginLoading());
-      final result = await _userRepo.login(
+      final result = await userRepo.login(
         email: emailController.text,
         password: passwordController.text,
       );
@@ -29,7 +29,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> loginWithGoogle() async {
     emit(LoginLoading());
-    final result = await _userRepo.authWithGoogle();
+    final result = await userRepo.authWithGoogle();
     result.fold(
       (failure) => emit(LoginError(failure.message)),
       (r) => emit(LoginSuccess()),

@@ -1,52 +1,71 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shopink/core/failures/failure.dart';
 import 'package:shopink/core/failures/logger.dart';
 import 'package:shopink/layers/data/models/cart_response.dart';
+import 'package:shopink/layers/data/models/product_response.dart';
 import 'package:shopink/layers/data/source/remote/firebase/constants.dart';
 import 'package:shopink/layers/domain/entities/cart.dart';
+import 'package:shopink/layers/domain/entities/product.dart';
 import 'package:shopink/layers/domain/repositories/cart_repo.dart';
 
 class CartRepoFirebaseImp implements CartRepo {
-  final _firebaseAuth = FirebaseAuth.instance;
-  final _firebaseFirestore = FirebaseFirestore.instance;
+  final _cartPath = FirebaseFirestore.instance
+      .collection(FirebaseCollections.carts)
+      .doc(FirebaseAuth.instance.currentUser?.uid);
+
+  CartResponse lastCartResponse = CartResponse.fromJson({});
 
   @override
-  Future<Either<Failure, CartEntity>> getCart() async {
+  StreamController<Either<Failure, CartEntity>> getCart() {
+    StreamController<Either<Failure, CartEntity>> cartController =
+        StreamController<Either<Failure, CartEntity>>();
     try {
       CartEntity cartEntity =
           CartEntity(totalItems: 0, totalPrice: 0, products: []);
 
-      final cartData = await _firebaseFirestore
-          .collection(FirebaseCollections.carts)
-          .doc(_firebaseAuth.currentUser?.uid)
-          .get();
+      _cartPath.snapshots().listen((snapshot) {
+        Log.info("Change in cart : ${snapshot.data()}");
+        lastCartResponse = CartResponse.fromJson(snapshot.data() ?? {});
 
-      if (cartData.data() != null && cartData.data()!.isNotEmpty) {
-        Log.info(cartData.data().toString());
-
-        CartResponse cartResponse =
-            CartResponse.fromJson(cartData.data() ?? {});
-
-        cartEntity.totalItems = cartResponse.count ?? 0;
-        cartEntity.totalPrice = cartResponse.price ?? 0;
-        cartEntity.products = cartResponse.products
-                ?.map((e) => CartProductEntity(
-                      quantity: e.quantity ?? 0,
+        cartEntity.totalItems = lastCartResponse.count ?? 0;
+        cartEntity.totalPrice = lastCartResponse.price ?? 0;
+        cartEntity.products = lastCartResponse.products
+                ?.map((e) => ProductEntity(
+                      quantityInCart: e.quantityInCart ?? 0,
                       id: e.id ?? 0,
-                      name: e.name ?? '',
+                      name: e.title ?? '',
                       description: e.description ?? '',
-                      imageUrl: e.imageUrl ?? '',
+                      imageUrl: e.image ?? '',
                       price: e.price ?? 0,
                       category: e.category ?? '',
-                      rate: e.rate ?? 0,
+                      rate: e.rating?.rate ?? 0,
                     ))
                 .toList() ??
             [];
-      }
-      
-      return Right(cartEntity);
+
+        cartController.add(Right(cartEntity));
+      }, onError: (error) {
+        Log.error(error.toString());
+        cartController.add(Left(Failure(error: error)));
+      });
+      return cartController;
+    } catch (e) {
+      Log.error(e.toString());
+      cartController.add(Left(Failure(error: e)));
+      return cartController;
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> clearCart() async {
+    try {
+      await _cartPath.delete();
+      Log.info("Cart cleared successfully");
+      return const Right(null);
     } catch (e) {
       Log.error(e.toString());
       return Left(Failure(error: e));
@@ -54,32 +73,110 @@ class CartRepoFirebaseImp implements CartRepo {
   }
 
   @override
-  Future<Either<Failure, void>> updateCart(CartEntity cartEntity) async {
+  Future<Either<Failure, void>> decrementProduct(
+      {required int productId}) async {
     try {
-      final cartPath = _firebaseFirestore
-          .collection(FirebaseCollections.carts)
-          .doc(_firebaseAuth.currentUser?.uid);
+      lastCartResponse.products?.firstWhere((element) {
+        if (element.id == productId) {
+          if (element.quantityInCart == 1) {
+            lastCartResponse.products?.remove(element);
+          } else {
+            element.quantityInCart = (element.quantityInCart ?? 0) + 1;
+          }
+          lastCartResponse.count = (lastCartResponse.count ?? 0) - 1;
+          lastCartResponse.price =
+              (lastCartResponse.price ?? 0) - (element.price ?? 0);
+          return true;
+        } else {
+          return false;
+        }
+      });
+      await _cartPath.set(lastCartResponse.toJson());
 
-      CartResponse cartResponse = CartResponse(
-        count: cartEntity.totalItems,
-        price: cartEntity.totalPrice,
-        products: cartEntity.products
-            .map(
-              (e) => CartProductResponse(
-                id: e.id,
-                name: e.name,
-                description: e.description,
-                imageUrl: e.imageUrl,
-                price: e.price,
-                quantity: e.quantity,
-                category: e.category,
-                rate: e.rate,
-              ),
-            )
-            .toList(),
+      Log.info("Product decremented successfully from cart");
+      return const Right(null);
+    } catch (e) {
+      Log.error(e.toString());
+      return Left(Failure(error: e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteProduct({required int productId}) async {
+    try {
+      lastCartResponse.products?.removeWhere((element) {
+        if (element.id == productId) {
+          lastCartResponse.count =
+              (lastCartResponse.count ?? 0) - (element.quantityInCart ?? 0);
+          lastCartResponse.price = (lastCartResponse.price ?? 0) -
+              ((element.price ?? 0) * (element.quantityInCart ?? 0));
+          return true;
+        } else {
+          return false;
+        }
+      });
+      await _cartPath.set(lastCartResponse.toJson());
+
+      Log.info("Product deleted successfully from cart");
+      return const Right(null);
+    } catch (e) {
+      Log.error(e.toString());
+      return Left(Failure(error: e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> incrementProduct(
+      {required int productId}) async {
+    try {
+      lastCartResponse.products?.firstWhere((element) {
+        if (element.id == productId) {
+          element.quantityInCart = (element.quantityInCart ?? 0) + 1;
+          lastCartResponse.count = (lastCartResponse.count ?? 0) + 1;
+          lastCartResponse.price =
+              (lastCartResponse.price ?? 0) + (element.price ?? 0);
+          return true;
+        } else {
+          return false;
+        }
+      });
+      await _cartPath.set(lastCartResponse.toJson());
+
+      Log.info("Product incremented successfully to cart");
+      return const Right(null);
+    } catch (e) {
+      Log.error(e.toString());
+      return Left(Failure(error: e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> addProduct(
+      {required ProductEntity product}) async {
+    try {
+      product = product.copyWith(quantityInCart: product.quantityInCart + 1);
+      ProductResponse productResponse = ProductResponse(
+        id: product.id,
+        title: product.name,
+        description: product.description,
+        image: product.imageUrl,
+        price: product.price,
+        quantityInCart: product.quantityInCart,
+        category: product.category,
+        rating: RatingResponse(rate: product.rate),
       );
-      Log.info("Cart : ${cartResponse.toJson().toString()}");
-      await cartPath.set(cartResponse.toJson());
+
+      lastCartResponse.count =
+          (lastCartResponse.count ?? 0) + product.quantityInCart;
+      lastCartResponse.price = (lastCartResponse.price ?? 0) +
+          (product.price * product.quantityInCart);
+      if (lastCartResponse.products == null) {
+        lastCartResponse.products = [productResponse];
+      } else {
+        lastCartResponse.products?.add(productResponse);
+      }
+      await _cartPath.set(lastCartResponse.toJson());
+      Log.info("Product added successfully to cart");
       return const Right(null);
     } catch (e) {
       Log.error(e.toString());

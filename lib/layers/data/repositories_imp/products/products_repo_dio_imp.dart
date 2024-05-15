@@ -32,6 +32,7 @@ class ProductsRepoDioImp implements ProductsRepo {
             price: element.price ?? 0,
             category: element.category ?? "fake category",
             rate: element.rating?.rate ?? 0,
+            quantityInCart: 0,
           ),
         );
       }

@@ -9,19 +9,22 @@ class Failure {
   String _userMessage = '';
   Failure({this.error, String userMessage = ''}) {
     if (userMessage.isEmpty) {
-      _userMessage = _exceptionMasseageMapper(error);
+      _userMessage = _errorMasseageMapper(error);
     } else {
       _userMessage = userMessage;
     }
   }
 
-  String _exceptionMasseageMapper(dynamic exception) {
-    if (exception is FirebaseException) {
-      return FirebaseExceptionHandler.handle(exception);
-    } else if (exception is SocketException) {
-      return LocaleKeys.noInternetConnection;
-    } else {
-      return LocaleKeys.somethingWrongHappend;
+  String _errorMasseageMapper(dynamic error) {
+    switch (error) {
+      case FirebaseException _:
+        return FirebaseExceptionHandler.handle(error);
+
+      case SocketException _:
+        return LocaleKeys.noInternetConnection;
+
+      default:
+        return LocaleKeys.somethingWrongHappend;
     }
   }
 

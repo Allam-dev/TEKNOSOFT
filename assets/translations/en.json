@@ -44,5 +44,8 @@
     "categories":"Categories",
     "products":"Products",
     "all":"All",
-    "cart":"Cart"
+    "cart":"Cart",
+    "total":"Total",
+    "count":"Count",
+    "checkout":"Checkout"
 }

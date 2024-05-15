@@ -6,8 +6,8 @@ import 'package:shopink/layers/domain/repositories/products_repo.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  final ProductsRepo _productsRepo;
-  HomeCubit(this._productsRepo) : super(HomeInitial());
+  final ProductsRepo productsRepo;
+  HomeCubit({required this.productsRepo}) : super(HomeInitial());
 
   List<ProductEntity> _allProducts = [];
   // final Map<String, String> _categories;
@@ -17,7 +17,7 @@ class HomeCubit extends Cubit<HomeState> {
       emit(HomeSuccess(_allProducts));
     } else {
       emit(HomeLoading());
-      final result = await _productsRepo.getProducts();
+      final result = await productsRepo.getProducts();
       result.fold(
         (failure) => emit(HomeError(failure.message)),
         (products) {
@@ -31,7 +31,7 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> filter({required String category}) async {
     emit(HomeLoading());
 
-    final result = await _productsRepo.filter(category: category);
+    final result = await productsRepo.filter(category: category);
     result.fold(
       (failure) => emit(HomeError(failure.message)),
       (products) => emit(HomeSuccess(products)),

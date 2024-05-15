@@ -44,6 +44,9 @@
     "categories": "الفئات",
     "products": "المنتجات",
     "all": "الكل",
-    "cart": "السلة"
+    "cart": "السلة",
+    "total": "المجموع",
+    "count": "عدد",
+    "checkout": "حاسب"
 
 }

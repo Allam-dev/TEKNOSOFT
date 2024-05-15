@@ -13,10 +13,11 @@ ProductResponse _$ProductResponseFromJson(Map<String, dynamic> json) =>
       price: (json['price'] as num?)?.toDouble(),
       description: json['description'] as String?,
       category: json['category'] as String?,
+      quantityInCart: (json['quantityInCart'] as num?)?.toInt(),
       image: json['image'] as String?,
       rating: json['rating'] == null
           ? null
-          : Rating.fromJson(json['rating'] as Map<String, dynamic>),
+          : RatingResponse.fromJson(json['rating'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ProductResponseToJson(ProductResponse instance) =>
@@ -27,15 +28,18 @@ Map<String, dynamic> _$ProductResponseToJson(ProductResponse instance) =>
       'description': instance.description,
       'category': instance.category,
       'image': instance.image,
+      'quantityInCart': instance.quantityInCart,
       'rating': instance.rating,
     };
 
-Rating _$RatingFromJson(Map<String, dynamic> json) => Rating(
+RatingResponse _$RatingResponseFromJson(Map<String, dynamic> json) =>
+    RatingResponse(
       rate: (json['rate'] as num?)?.toDouble(),
       count: (json['count'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$RatingToJson(Rating instance) => <String, dynamic>{
+Map<String, dynamic> _$RatingResponseToJson(RatingResponse instance) =>
+    <String, dynamic>{
       'rate': instance.rate,
       'count': instance.count,
     };

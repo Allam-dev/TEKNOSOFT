@@ -47,5 +47,8 @@ abstract class  LocaleKeys {
   static const products = 'products';
   static const all = 'all';
   static const cart = 'cart';
+  static const total = 'total';
+  static const count = 'count';
+  static const checkout = 'checkout';
 
 }
