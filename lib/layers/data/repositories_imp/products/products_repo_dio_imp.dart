@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:shopink/core/di/dependency_injection.dart';
-import 'package:shopink/core/failures/failure.dart';
-import 'package:shopink/core/failures/logger.dart';
+import 'package:shopink/core/errors/failure.dart';
+import 'package:shopink/core/errors/logger.dart';
 import 'package:shopink/layers/data/source/remote/api/api_calls.dart';
 import 'package:shopink/layers/domain/entities/product.dart';
 import 'package:shopink/layers/domain/repositories/products_repo.dart';
@@ -39,7 +39,7 @@ class ProductsRepoDioImp implements ProductsRepo {
       return Right(products);
     } catch (e) {
       Log.error(e.toString());
-      return Left(Failure(error: e));
+      return Left(Failure.fromException(exception: e));
     }
   }
 }

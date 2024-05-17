@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:shopink/core/failures/failure.dart';
-import 'package:shopink/core/failures/logger.dart';
+import 'package:shopink/core/errors/failure.dart';
+import 'package:shopink/core/errors/logger.dart';
 import 'package:shopink/layers/data/models/cart_response.dart';
 import 'package:shopink/layers/data/models/product_response.dart';
 import 'package:shopink/layers/data/source/remote/firebase/constants.dart';
@@ -50,12 +50,12 @@ class CartRepoFirebaseImp implements CartRepo {
         cartController.add(Right(cartEntity));
       }, onError: (error) {
         Log.error(error.toString());
-        cartController.add(Left(Failure(error: error)));
+        cartController.add(Left(Failure.fromException(exception: error)));
       });
       return cartController;
     } catch (e) {
       Log.error(e.toString());
-      cartController.add(Left(Failure(error: e)));
+      cartController.add(Left(Failure.fromException(exception: e)));
       return cartController;
     }
   }
@@ -68,7 +68,7 @@ class CartRepoFirebaseImp implements CartRepo {
       return const Right(null);
     } catch (e) {
       Log.error(e.toString());
-      return Left(Failure(error: e));
+      return Left(Failure.fromException(exception: e));
     }
   }
 
@@ -97,7 +97,7 @@ class CartRepoFirebaseImp implements CartRepo {
       return const Right(null);
     } catch (e) {
       Log.error(e.toString());
-      return Left(Failure(error: e));
+      return Left(Failure.fromException(exception: e));
     }
   }
 
@@ -121,7 +121,7 @@ class CartRepoFirebaseImp implements CartRepo {
       return const Right(null);
     } catch (e) {
       Log.error(e.toString());
-      return Left(Failure(error: e));
+      return Left(Failure.fromException(exception: e));
     }
   }
 
@@ -146,7 +146,7 @@ class CartRepoFirebaseImp implements CartRepo {
       return const Right(null);
     } catch (e) {
       Log.error(e.toString());
-      return Left(Failure(error: e));
+      return Left(Failure.fromException(exception: e));
     }
   }
 
@@ -180,7 +180,7 @@ class CartRepoFirebaseImp implements CartRepo {
       return const Right(null);
     } catch (e) {
       Log.error(e.toString());
-      return Left(Failure(error: e));
+      return Left(Failure.fromException(exception: e));
     }
   }
 }

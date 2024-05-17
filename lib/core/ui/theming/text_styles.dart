@@ -34,6 +34,12 @@ abstract interface class TextStyles {
     color: Colors.grey,
   );
 
+   static TextStyle font15WhiteNormal = TextStyle(
+    fontSize: 15.sp,
+    fontWeight: FontWeight.normal,
+    color: Colors.white,
+  );
+
   static TextStyle font15GreenNormal = TextStyle(
     fontSize: 15.sp,
     fontWeight: FontWeight.normal,

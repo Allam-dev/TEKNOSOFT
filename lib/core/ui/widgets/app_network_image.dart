@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopink/core/failures/logger.dart';
+import 'package:shopink/core/errors/logger.dart';
 import 'package:shopink/core/ui/assets/assets.gen.dart';
 
 class AppNetworkImage extends StatelessWidget {

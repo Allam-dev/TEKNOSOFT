@@ -20,4 +20,7 @@ abstract interface class Routes {
   static const String settingsRoute = '/settings';
   static const String notificationRoute = '/notification';
   static const String mainLayoutRoute = '/main-layout';
+  static const String addressesRoute = '/addresses';
+  static const String privacyPolicyRoute = '/privacy-policy';
+  static const String contactUsRoute = '/contact-us';
 }

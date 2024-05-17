@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopink/layers/presentation/home/ui/home_screen.dart';
 import 'package:shopink/layers/presentation/login/ui/login_screen.dart';
 import 'package:shopink/layers/presentation/main/main_layout.dart';
+import 'package:shopink/layers/presentation/profile/profile_screen.dart';
 import 'package:shopink/layers/presentation/signup/ui/signup_screen.dart';
 import 'package:shopink/layers/presentation/splash/splash.dart';
 
@@ -38,6 +39,13 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const MainLayout(),
         );
+
+      case Routes.profileRoute:
+        return MaterialPageRoute(
+          builder: (context) => const ProfileScreen(),
+        );
+
+        
 
       default:
         return MaterialPageRoute(

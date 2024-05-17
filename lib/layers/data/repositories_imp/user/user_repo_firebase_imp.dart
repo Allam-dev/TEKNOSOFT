@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:shopink/core/failures/failure.dart';
-import 'package:shopink/core/failures/logger.dart';
+import 'package:shopink/core/errors/failure.dart';
+import 'package:shopink/core/errors/logger.dart';
 import 'package:shopink/core/services/localization/locale_keys.g.dart';
+import 'package:shopink/layers/domain/entities/user.dart';
 import 'package:shopink/layers/domain/repositories/user_repo.dart';
 
 class UserRepoFirebaseImp implements UserRepo {
@@ -25,7 +26,7 @@ class UserRepoFirebaseImp implements UserRepo {
     } catch (e) {
       Log.error(e.toString());
 
-      return Left(Failure(error: e));
+      return Left(Failure.fromException(exception: e));
     }
   }
 
@@ -46,24 +47,27 @@ class UserRepoFirebaseImp implements UserRepo {
         return const Right(null);
       } else {
         Log.error('you should select google account');
-        return Left(
-            Failure(userMessage: LocaleKeys.youShouldSelectGoogleAccount));
+        return Left(Failure(
+            type: FailureType.invalidInput,
+            message: LocaleKeys.youShouldSelectGoogleAccount));
       }
     } catch (e) {
       Log.error(e.toString());
-      return Left(Failure(error: e));
+      return Left(Failure.fromException(exception: e));
     }
   }
 
   @override
   Future<Either<Failure, void>> logout() async {
     try {
-      await GoogleSignIn().signOut();
-      await _firebaseAuth.signOut();
+      await Future.wait([
+        GoogleSignIn().signOut(),
+        _firebaseAuth.signOut(),
+      ]);
       return const Right(null);
     } catch (e) {
       Log.error(e.toString());
-      return Left(Failure(error: e));
+      return Left(Failure.fromException(exception: e));
     }
   }
 
@@ -80,23 +84,54 @@ class UserRepoFirebaseImp implements UserRepo {
     } catch (e) {
       Log.error(e.toString());
 
-      return Left(Failure(error: e));
+      return Left(Failure.fromException(exception: e));
     }
   }
 
   @override
-  Future<Either<Failure, void>> updatePassword() {
-    // TODO: implement updatePassword
+  Future<Either<Failure, void>> updateProfile(
+      {required UserEntity user}) async {
+    try {
+      if (_firebaseAuth.currentUser != null) {
+        await Future.wait([
+          // _firebaseAuth.currentUser?.updateDisplayName(user.name),
+          // _firebaseAuth.currentUser!.updatePhoneNumber(user.phone),
+        ]);
+        return const Right(null);
+      } else {
+        return Left(Failure(type: FailureType.unauthorized));
+      }
+    } catch (e) {
+      Log.error(e.toString());
+
+      return Left(Failure.fromException(exception: e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> changePassword(
+      {required String oldPassword, required String newPassword}) {
+    // TODO: implement changePassword
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, void>> updateProfile() {
-    // TODO: implement updateProfile
-    throw UnimplementedError();
+  Future<Either<Failure, UserEntity>> getProfile() async {
+    try {
+      if (_firebaseAuth.currentUser != null) {
+        return Right(UserEntity(
+          id: _firebaseAuth.currentUser!.uid,
+          name: _firebaseAuth.currentUser!.displayName ?? '',
+          email: _firebaseAuth.currentUser!.email ?? '',
+          phone: _firebaseAuth.currentUser!.phoneNumber ?? '',
+          imageUrl: _firebaseAuth.currentUser!.photoURL ?? '',
+        ));
+      } else {
+        return Left(Failure(type: FailureType.unauthorized));
+      }
+    } catch (e) {
+      Log.error(e.toString());
+      return Left(Failure.fromException(exception: e));
+    }
   }
-  
-  
-  
- 
 }

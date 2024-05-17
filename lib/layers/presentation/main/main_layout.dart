@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopink/layers/presentation/cart/ui/cart_screen.dart';
 import 'package:shopink/layers/presentation/home/ui/home_screen.dart';
+import 'package:shopink/layers/presentation/settings/ui/settings_screen.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -21,7 +22,7 @@ class _MainLayoutState extends State<MainLayout> {
           const HomeScreen(),
           const CartScreen(),
           Container(),
-          Container(),
+          const SettingsScreen(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -44,12 +45,12 @@ class _MainLayoutState extends State<MainLayout> {
             label: 'Cart',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorite',
+            icon: Icon(Icons.receipt_long),
+            label: 'Orders',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
+            icon: Icon(Icons.settings_rounded),
+            label: 'Settings',
           ),
         ],
       ),

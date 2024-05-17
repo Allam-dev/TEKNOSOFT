@@ -50,5 +50,30 @@ abstract class  LocaleKeys {
   static const total = 'total';
   static const count = 'count';
   static const checkout = 'checkout';
+  static const youMustBeAuthenticated = 'youMustBeAuthenticated';
+  static const settings = 'settings';
+  static const language = 'language';
+  static const theme = 'theme';
+  static const logout = 'logout';
+  static const changePassword = 'changePassword';
+  static const oldPassword = 'oldPassword';
+  static const newPassword = 'newPassword';
+  static const confirmNewPassword = 'confirmNewPassword';
+  static const updateProfile = 'updateProfile';
+  static const profile = 'profile';
+  static const emailAddress = 'emailAddress';
+  static const update = 'update';
+  static const privacyPolicy = 'privacyPolicy';
+  static const contactUs = 'contactUs';
+  static const addresses = 'addresses';
+  static const checkInternetConnection = 'checkInternetConnection';
+  static const internalServerError = 'internalServerError';
+  static const unknown = 'unknown';
+  static const databaseError = 'databaseError';
+  static const unknownError = 'unknownError';
+  static const unauthorized = 'unauthorized';
+  static const noData = 'noData';
+  static const invalidInput = 'invalidInput';
+  static const cacheError = 'cacheError';
 
 }

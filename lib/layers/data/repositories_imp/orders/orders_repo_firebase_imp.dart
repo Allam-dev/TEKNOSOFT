@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:shopink/core/failures/failure.dart';
+import 'package:shopink/core/errors/failure.dart';
 import 'package:shopink/layers/domain/entities/order.dart';
 import 'package:shopink/layers/domain/repositories/orders_repo.dart';
 
