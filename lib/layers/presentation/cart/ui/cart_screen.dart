@@ -6,11 +6,17 @@ import 'package:shopink/core/services/localization/locale_keys.g.dart';
 import 'package:shopink/layers/presentation/cart/cubit/cart_cubit.dart';
 import 'package:shopink/layers/presentation/cart/ui/widgets/cart_body.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
 
   @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen>with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return BlocProvider(
       create: (context) => getIt<CartCubit>()..getCart(),
       child: Builder(
@@ -19,10 +25,13 @@ class CartScreen extends StatelessWidget {
             appBar: AppBar(
               title: Text(LocaleKeys.cart.tr()),
             ),
-            body: CartBody(),
+            body: const CartBody(),
           );
         },
       ),
     );
   }
+  
+  @override
+  bool get wantKeepAlive => true;
 }

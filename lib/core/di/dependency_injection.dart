@@ -15,7 +15,8 @@ import 'package:shopink/layers/domain/repositories/user_repo.dart';
 import 'package:shopink/layers/presentation/cart/cubit/cart_cubit.dart';
 import 'package:shopink/layers/presentation/home/cubit/home_cubit.dart';
 import 'package:shopink/layers/presentation/login/cubit/login_cubit.dart';
-import 'package:shopink/layers/presentation/settings/cubit/settings_cubit.dart';
+import 'package:shopink/layers/presentation/settings/cubit/profile_card_cubit/profile_card_cubit.dart';
+import 'package:shopink/layers/presentation/settings/cubit/settings_cubit/settings_cubit.dart';
 import 'package:shopink/layers/presentation/signup/cubit/signup_cubit.dart';
 
 final getIt = GetIt.instance;
@@ -40,8 +41,7 @@ Future<void> initGetIt() async {
     },
   );
 
-  // ========== Local Storage ==========
-
+  
   // ====================== Leyers =======================
   // ========== repositories ==========
   getIt.registerLazySingleton<UserRepo>(() => UserRepoFirebaseImp());
@@ -61,4 +61,6 @@ Future<void> initGetIt() async {
       .registerFactory<CartCubit>(() => CartCubit(cartRepo: getIt<CartRepo>()));
   getIt.registerFactory<SettingsCubit>(
       () => SettingsCubit(userRepo: getIt<UserRepo>()));
+  getIt.registerFactory<ProfileCardCubit>(
+      () => ProfileCardCubit(userRepo: getIt<UserRepo>()));
 }

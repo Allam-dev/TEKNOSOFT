@@ -5,7 +5,7 @@ import 'package:shopink/core/extensions/context/navigation.dart';
 import 'package:shopink/core/routing/routes.dart';
 import 'package:shopink/core/services/localization/locale_keys.g.dart';
 import 'package:shopink/core/ui/theming/text_styles.dart';
-import 'package:shopink/core/ui/widgets/fileds/app_button.dart';
+import 'package:shopink/core/ui/widgets/app_button.dart';
 import 'package:shopink/layers/presentation/cart/cubit/cart_cubit.dart';
 
 class CartInfo extends StatelessWidget {

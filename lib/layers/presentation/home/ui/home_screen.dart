@@ -8,11 +8,18 @@ import 'package:shopink/layers/presentation/home/ui/widgets/filtar_button.dart';
 import 'package:shopink/core/ui/widgets/no_products_text.dart';
 import 'package:shopink/layers/presentation/home/ui/widgets/products_list_view.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen>
+    with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return BlocProvider(
       create: (context) => getIt<HomeCubit>()..getProducts(),
       child: Builder(
@@ -44,4 +51,7 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

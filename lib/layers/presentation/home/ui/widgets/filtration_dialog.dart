@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopink/core/services/localization/locale_keys.g.dart';
 import 'package:shopink/core/ui/theming/text_styles.dart';
-import 'package:shopink/core/ui/widgets/fileds/app_button.dart';
+import 'package:shopink/core/ui/widgets/app_button.dart';
 
 class FiltrationDialog extends StatelessWidget {
   const FiltrationDialog({super.key});

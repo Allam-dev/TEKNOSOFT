@@ -4,61 +4,57 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:shopink/core/di/dependency_injection.dart';
-import 'package:shopink/core/extensions/context/navigation.dart';
-import 'package:shopink/core/routing/routes.dart';
 import 'package:shopink/core/services/localization/locale_keys.g.dart';
-import 'package:shopink/layers/presentation/settings/cubit/settings_cubit.dart';
+import 'package:shopink/layers/presentation/settings/cubit/settings_cubit/settings_cubit.dart';
+import 'package:shopink/layers/presentation/settings/ui/widgets/addresses_settings_card.dart';
+import 'package:shopink/layers/presentation/settings/ui/widgets/contact_us_settings_card.dart';
+import 'package:shopink/layers/presentation/settings/ui/widgets/language_settings_card.dart';
+import 'package:shopink/layers/presentation/settings/ui/widgets/logout_settings_card.dart';
+import 'package:shopink/layers/presentation/settings/ui/widgets/privacy_settings_card.dart';
 import 'package:shopink/layers/presentation/settings/ui/widgets/profile_card.dart';
-import 'package:shopink/layers/presentation/settings/ui/widgets/settings_card.dart';
+import 'package:shopink/layers/presentation/settings/ui/widgets/settings_cubit_listener.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 
   @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen>
+    with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return BlocProvider(
-      create: (context) => getIt<SettingsCubit>()..getUser(),
+      create: (context) => getIt<SettingsCubit>(),
       child: Scaffold(
         appBar: AppBar(
           title: Text(LocaleKeys.settings.tr()),
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              const ProfileCard(),
-              Gap(40.h),
-              SettingsCard(
-                title: LocaleKeys.language.tr(),
-                icon: Icons.language_rounded,
-              ),
-              Gap(20.h),
-              SettingsCard(
-                title: LocaleKeys.addresses.tr(),
-                icon: Icons.location_on_rounded,
-                onTap: () => context.pushNamed(Routes.addressesRoute),
-              ),
-              Gap(20.h),
-              SettingsCard(
-                title: LocaleKeys.privacyPolicy.tr(),
-                icon: Icons.privacy_tip_rounded,
-                onTap: () => context.pushNamed(Routes.privacyPolicyRoute),
-              ),
-              Gap(20.h),
-              SettingsCard(
-                title: LocaleKeys.contactUs.tr(),
-                icon: Icons.call_rounded,
-                onTap: () => context.pushNamed(Routes.contactUsRoute),
-              ),
-              Gap(20.h),
-              SettingsCard(
-                title: LocaleKeys.logout.tr(),
-                icon: Icons.logout_rounded,
-                onTap: () => context.read<SettingsCubit>().logout(),
-              ),
-            ],
+        body: SettingsCubitListener(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const ProfileCard(),
+                Gap(40.h),
+                const LanguageSettingsCard(),
+                Gap(20.h),
+                const AddressesSettingsCard(),
+                Gap(20.h),
+                const PrivacySettingsCard(),
+                Gap(20.h),
+                const ContactUsSettingsCard(),
+                Gap(20.h),
+                const LogoutSettingsCard(),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

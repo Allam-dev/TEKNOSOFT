@@ -23,4 +23,5 @@ abstract interface class Routes {
   static const String addressesRoute = '/addresses';
   static const String privacyPolicyRoute = '/privacy-policy';
   static const String contactUsRoute = '/contact-us';
+  static const String ordersRoute = '/orders';
 }
