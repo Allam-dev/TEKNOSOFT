@@ -88,7 +88,8 @@ class CodegenLoader extends AssetLoader{
   "unauthorized": "غير مصرح",
   "noData": "لا يوجد بيانات",
   "invalidInput": "مدخل غير صالح",
-  "cacheError": "خطأ في الذاكرة المؤقتة"
+  "cacheError": "خطأ في الذاكرة المؤقتة",
+  "addAddress": "اضافة عنوان"
 };
 static const Map<String,dynamic> en = {
   "somethingWrongHappend": "Something wrong happened",
@@ -168,7 +169,8 @@ static const Map<String,dynamic> en = {
   "invalidEmail": "Invalid email",
   "noData": "No data",
   "invalidInput": "Invalid input",
-  "cacheError": "Cache error"
+  "cacheError": "Cache error",
+  "addAddress": "Add address"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }

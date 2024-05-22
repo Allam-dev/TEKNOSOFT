@@ -1,18 +1,18 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:shopink/layers/data/models/product_response.dart';
-part 'cart_response.g.dart';
+import 'package:shopink/layers/data/models/product_dto.dart';
+part 'cart_dto.g.dart';
 
 @JsonSerializable()
-class CartResponse {
+class CartDTO {
   double? price;
   @JsonKey(name: "items")
   int? count;
-  List<ProductResponse>? products;
+  List<ProductDTO>? products;
 
-  CartResponse({this.price, this.count, this.products});
+  CartDTO({this.price, this.count, this.products});
 
-  factory CartResponse.fromJson(Map<String, dynamic> json) =>
-      _$CartResponseFromJson(json);
+  factory CartDTO.fromJson(Map<String, dynamic> json) =>
+      _$CartDTOFromJson(json);
   Map<String, dynamic> toJson() => <String, dynamic>{
         'price': price,
         'items': count,

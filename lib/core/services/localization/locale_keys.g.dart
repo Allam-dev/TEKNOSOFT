@@ -75,5 +75,6 @@ abstract class  LocaleKeys {
   static const noData = 'noData';
   static const invalidInput = 'invalidInput';
   static const cacheError = 'cacheError';
+  static const addAddress = 'addAddress';
 
 }

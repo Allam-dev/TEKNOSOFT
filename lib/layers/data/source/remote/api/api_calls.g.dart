@@ -21,13 +21,13 @@ class _ApiCalls implements ApiCalls {
   String? baseUrl;
 
   @override
-  Future<List<ProductResponse>> getProducts() async {
+  Future<List<ProductDTO>> getProducts() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<ProductResponse>>(Options(
+        .fetch<List<dynamic>>(_setStreamType<List<ProductDTO>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -44,19 +44,19 @@ class _ApiCalls implements ApiCalls {
               baseUrl,
             ))));
     var value = _result.data!
-        .map((dynamic i) => ProductResponse.fromJson(i as Map<String, dynamic>))
+        .map((dynamic i) => ProductDTO.fromJson(i as Map<String, dynamic>))
         .toList();
     return value;
   }
 
   @override
-  Future<ProductResponse> getProductByCategory(String category) async {
+  Future<ProductDTO> getProductByCategory(String category) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<ProductResponse>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<ProductDTO>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -72,7 +72,7 @@ class _ApiCalls implements ApiCalls {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ProductResponse.fromJson(_result.data!);
+    final value = ProductDTO.fromJson(_result.data!);
     return value;
   }
 

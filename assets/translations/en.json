@@ -76,5 +76,6 @@
     "invalidEmail": "Invalid email",
     "noData": "No data",
     "invalidInput": "Invalid input",
-    "cacheError": "Cache error"
+    "cacheError": "Cache error",
+    "addAddress": "Add address"
 }

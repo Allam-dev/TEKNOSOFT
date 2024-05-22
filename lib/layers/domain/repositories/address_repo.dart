@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:shopink/core/errors/failure.dart';
 import 'package:shopink/layers/domain/entities/address.dart';
 
-abstract interface class AddressRepo {
+abstract interface class AddressesRepo {
   Future<Either<Failure, List<AddressEntity>>> getAll();
   Future<Either<Failure, void>> add(AddressEntity address);
   Future<Either<Failure, void>> update(int id);

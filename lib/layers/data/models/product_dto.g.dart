@@ -1,13 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'product_response.dart';
+part of 'product_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ProductResponse _$ProductResponseFromJson(Map<String, dynamic> json) =>
-    ProductResponse(
+ProductDTO _$ProductDTOFromJson(Map<String, dynamic> json) => ProductDTO(
       id: (json['id'] as num?)?.toInt(),
       title: json['title'] as String?,
       price: (json['price'] as num?)?.toDouble(),
@@ -17,10 +16,10 @@ ProductResponse _$ProductResponseFromJson(Map<String, dynamic> json) =>
       image: json['image'] as String?,
       rating: json['rating'] == null
           ? null
-          : RatingResponse.fromJson(json['rating'] as Map<String, dynamic>),
+          : RatingDTO.fromJson(json['rating'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$ProductResponseToJson(ProductResponse instance) =>
+Map<String, dynamic> _$ProductDTOToJson(ProductDTO instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
@@ -32,14 +31,12 @@ Map<String, dynamic> _$ProductResponseToJson(ProductResponse instance) =>
       'rating': instance.rating,
     };
 
-RatingResponse _$RatingResponseFromJson(Map<String, dynamic> json) =>
-    RatingResponse(
+RatingDTO _$RatingDTOFromJson(Map<String, dynamic> json) => RatingDTO(
       rate: (json['rate'] as num?)?.toDouble(),
       count: (json['count'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$RatingResponseToJson(RatingResponse instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$RatingDTOToJson(RatingDTO instance) => <String, dynamic>{
       'rate': instance.rate,
       'count': instance.count,
     };

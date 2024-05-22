@@ -72,5 +72,6 @@
     "unauthorized": "غير مصرح",
     "noData": "لا يوجد بيانات",
     "invalidInput": "مدخل غير صالح",
-    "cacheError": "خطأ في الذاكرة المؤقتة"
+    "cacheError": "خطأ في الذاكرة المؤقتة",
+    "addAddress": "اضافة عنوان"
 }

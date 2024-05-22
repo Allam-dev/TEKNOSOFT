@@ -12,6 +12,8 @@ import 'package:shopink/layers/domain/repositories/cart_repo.dart';
 import 'package:shopink/layers/domain/repositories/orders_repo.dart';
 import 'package:shopink/layers/domain/repositories/products_repo.dart';
 import 'package:shopink/layers/domain/repositories/user_repo.dart';
+import 'package:shopink/layers/presentation/add_address/cubit/add_address_cubit.dart';
+import 'package:shopink/layers/presentation/addresses/cubit/addresses_cubit.dart';
 import 'package:shopink/layers/presentation/cart/cubit/cart_cubit.dart';
 import 'package:shopink/layers/presentation/home/cubit/home_cubit.dart';
 import 'package:shopink/layers/presentation/login/cubit/login_cubit.dart';
@@ -41,14 +43,13 @@ Future<void> initGetIt() async {
     },
   );
 
-  
   // ====================== Leyers =======================
   // ========== repositories ==========
   getIt.registerLazySingleton<UserRepo>(() => UserRepoFirebaseImp());
   getIt.registerLazySingleton<CartRepo>(() => CartRepoFirebaseImp());
   getIt.registerLazySingleton<ProductsRepo>(() => ProductsRepoDioImp());
   getIt.registerLazySingleton<OrdersRepo>(() => OrdersRepoFirebaseImp());
-  getIt.registerLazySingleton<AddressRepo>(() => AddressRepoFirebaseImp());
+  getIt.registerLazySingleton<AddressesRepo>(() => AddressRepoFirebaseImp());
 
   // ========== cubits ==========
   getIt.registerFactory<LoginCubit>(
@@ -63,4 +64,6 @@ Future<void> initGetIt() async {
       () => SettingsCubit(userRepo: getIt<UserRepo>()));
   getIt.registerFactory<ProfileCardCubit>(
       () => ProfileCardCubit(userRepo: getIt<UserRepo>()));
+  getIt.registerFactory(()=>AddressesCubit(addressesRepo: getIt<AddressesRepo>()));
+  getIt.registerFactory(()=>AddAddressCubit(addressesRepo: getIt<AddressesRepo>()));
 }

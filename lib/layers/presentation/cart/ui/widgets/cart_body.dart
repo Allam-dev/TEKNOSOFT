@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopink/core/services/localization/locale_keys.g.dart';
 import 'package:shopink/core/ui/widgets/no_products_text.dart';
 import 'package:shopink/layers/presentation/cart/cubit/cart_cubit.dart';
 import 'package:shopink/layers/presentation/cart/ui/widgets/cart_info.dart';
@@ -20,7 +22,9 @@ class CartBody extends StatelessWidget {
             builder: (context, state) {
               if (state is CartSuccess) {
                 if (state.cart.products.isEmpty) {
-                  return const NoProductsText();
+                  return NoDataText(
+                    text: LocaleKeys.noProducts.tr(),
+                  );
                 } else {
                   return CartList(
                     products: state.cart.products,

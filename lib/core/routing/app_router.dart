@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopink/layers/presentation/addresses/ui/addresses_screen.dart';
 import 'package:shopink/layers/presentation/home/ui/home_screen.dart';
 import 'package:shopink/layers/presentation/login/ui/login_screen.dart';
 import 'package:shopink/layers/presentation/bottom_navigation_bar/ui/bottom_navigation_bar_layout.dart';
@@ -43,6 +44,11 @@ class AppRouter {
       case Routes.profileRoute:
         return MaterialPageRoute(
           builder: (context) => const ProfileScreen(),
+        );
+
+      case Routes.addressesRoute:
+        return MaterialPageRoute(
+          builder: (context) => const AddressesScreen(),
         );
 
       default:

@@ -1,8 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'product_response.g.dart';
+part 'product_dto.g.dart';
 
 @JsonSerializable()
-class ProductResponse {
+class ProductDTO {
   int? id;
   String? title;
   double? price;
@@ -10,8 +10,8 @@ class ProductResponse {
   String? category;
   String? image;
   int? quantityInCart;
-  RatingResponse? rating;
-  ProductResponse(
+  RatingDTO? rating;
+  ProductDTO(
       {this.id,
       this.title,
       this.price,
@@ -21,8 +21,8 @@ class ProductResponse {
       this.image,
       this.rating});
 
-  factory ProductResponse.fromJson(Map<String, dynamic> json) =>
-      _$ProductResponseFromJson(json);
+  factory ProductDTO.fromJson(Map<String, dynamic> json) =>
+      _$ProductDTOFromJson(json);
   Map<String, dynamic> toJson() => <String, dynamic>{
         'id': id,
         'title': title,
@@ -36,13 +36,13 @@ class ProductResponse {
 }
 
 @JsonSerializable()
-class RatingResponse {
+class RatingDTO {
   double? rate;
   int? count;
 
-  RatingResponse({this.rate, this.count});
+  RatingDTO({this.rate, this.count});
 
-  factory RatingResponse.fromJson(Map<String, dynamic> json) =>
-      _$RatingResponseFromJson(json);
-  Map<String, dynamic> toJson() => _$RatingResponseToJson(this);
+  factory RatingDTO.fromJson(Map<String, dynamic> json) =>
+      _$RatingDTOFromJson(json);
+  Map<String, dynamic> toJson() => _$RatingDTOToJson(this);
 }

@@ -5,8 +5,8 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shopink/core/errors/failure.dart';
 import 'package:shopink/core/errors/logger.dart';
-import 'package:shopink/layers/data/models/cart_response.dart';
-import 'package:shopink/layers/data/models/product_response.dart';
+import 'package:shopink/layers/data/models/cart_dto.dart';
+import 'package:shopink/layers/data/models/product_dto.dart';
 import 'package:shopink/layers/data/source/remote/firebase/constants.dart';
 import 'package:shopink/layers/domain/entities/cart.dart';
 import 'package:shopink/layers/domain/entities/product.dart';
@@ -17,7 +17,7 @@ class CartRepoFirebaseImp implements CartRepo {
       .collection(FirebaseCollections.carts)
       .doc(FirebaseAuth.instance.currentUser?.uid);
 
-  CartResponse lastCartResponse = CartResponse.fromJson({});
+  CartDTO lastCartResponse = CartDTO.fromJson({});
 
   @override
   StreamController<Either<Failure, CartEntity>> getCart() {
@@ -29,7 +29,7 @@ class CartRepoFirebaseImp implements CartRepo {
 
       _cartPath.snapshots().listen((snapshot) {
         Log.info("Change in cart : ${snapshot.data()}");
-        lastCartResponse = CartResponse.fromJson(snapshot.data() ?? {});
+        lastCartResponse = CartDTO.fromJson(snapshot.data() ?? {});
 
         cartEntity.totalItems = lastCartResponse.count ?? 0;
         cartEntity.totalPrice = lastCartResponse.price ?? 0;
@@ -155,7 +155,7 @@ class CartRepoFirebaseImp implements CartRepo {
       {required ProductEntity product}) async {
     try {
       product = product.copyWith(quantityInCart: product.quantityInCart + 1);
-      ProductResponse productResponse = ProductResponse(
+      ProductDTO productResponse = ProductDTO(
         id: product.id,
         title: product.name,
         description: product.description,
@@ -163,7 +163,7 @@ class CartRepoFirebaseImp implements CartRepo {
         price: product.price,
         quantityInCart: product.quantityInCart,
         category: product.category,
-        rating: RatingResponse(rate: product.rate),
+        rating: RatingDTO(rate: product.rate),
       );
 
       lastCartResponse.count =
