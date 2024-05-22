@@ -16,4 +16,8 @@ class SettingsCubit extends Cubit<SettingsState> {
       (r) => emit(SettingsLogout()),
     );
   }
+
+  void changeLanguage() {
+    
+  }
 }
