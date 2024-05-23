@@ -11,20 +11,26 @@ class AddAddressCubit extends Cubit<AddAddressState> {
   AddAddressCubit({required this.addressesRepo}) : super(AddAddressInitial());
 
   final formKey = GlobalKey<FormState>();
+  final titleController = TextEditingController();
+  final streetController = TextEditingController();
+  final cityController = TextEditingController();
+  final governorateController = TextEditingController();
 
   void addAddress() async {
-    emit(AddAddressLoading());
-    final result = await addressesRepo.add(
-      AddressEntity(
-        title: "title",
-        street: "street",
-        city: "city",
-        governorate: "governorate",
-      ),
-    );
-    result.fold(
-      (failure) => emit(AddAddressError(failure.message)),
-      (address) => emit(AddAddressSuccess()),
-    );
+    if (formKey.currentState!.validate()) {
+      emit(AddAddressLoading());
+      final result = await addressesRepo.add(
+        AddressEntity(
+          title: titleController.text,
+          street: streetController.text,
+          city: cityController.text,
+          governorate: governorateController.text,
+        ),
+      );
+      result.fold(
+        (failure) => emit(AddAddressError(failure.message)),
+        (address) => emit(AddAddressSuccess()),
+      );
+    }
   }
 }

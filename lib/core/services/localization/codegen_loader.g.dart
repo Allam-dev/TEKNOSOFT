@@ -89,7 +89,14 @@ class CodegenLoader extends AssetLoader{
   "noData": "لا يوجد بيانات",
   "invalidInput": "مدخل غير صالح",
   "cacheError": "خطأ في الذاكرة المؤقتة",
-  "addAddress": "اضافة عنوان"
+  "addAddress": "اضافة عنوان",
+  "title": "العنوان",
+  "street": "الشارع",
+  "city": "مدينة",
+  "governorate": "محافظة",
+  "address": "عنوان",
+  "add": "اضافة",
+  "edit": "تعديل"
 };
 static const Map<String,dynamic> en = {
   "somethingWrongHappend": "Something wrong happened",
@@ -170,7 +177,14 @@ static const Map<String,dynamic> en = {
   "noData": "No data",
   "invalidInput": "Invalid input",
   "cacheError": "Cache error",
-  "addAddress": "Add address"
+  "addAddress": "Add address",
+  "title": "Title",
+  "street": "Street",
+  "city": "City",
+  "governorate": "Governorate",
+  "address": "Address",
+  "add": "Add",
+  "edit": "Edit"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }

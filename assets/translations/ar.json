@@ -73,5 +73,12 @@
     "noData": "لا يوجد بيانات",
     "invalidInput": "مدخل غير صالح",
     "cacheError": "خطأ في الذاكرة المؤقتة",
-    "addAddress": "اضافة عنوان"
+    "addAddress": "اضافة عنوان",
+    "title": "العنوان",
+    "street": "الشارع",
+    "city": "مدينة",
+    "governorate": "محافظة",
+    "address": "عنوان",
+    "add": "اضافة",
+    "edit": "تعديل"
 }

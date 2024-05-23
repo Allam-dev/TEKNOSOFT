@@ -8,6 +8,14 @@ extension Validations on String {
             '^(?=(.*[a-z]){${PasswordValidationConditions.numberOfLowercase},})(?=(.*[A-Z]){${PasswordValidationConditions.numberOfUppercase},})(?=(.*[0-9]){${PasswordValidationConditions.numberOfDigits},})(?=(.*[!@#\$%^&*()\\-_+.]){${PasswordValidationConditions.numberOfSpecialCharacters},}).{${PasswordValidationConditions.minLength},}\$')
         .hasMatch(this);
   }
+
+  bool isName() {
+    if (isEmpty || length < 3) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }
 
 abstract class PasswordValidationConditions {

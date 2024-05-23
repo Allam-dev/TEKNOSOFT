@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopink/layers/presentation/add_address/ui/add_address_screen.dart';
 import 'package:shopink/layers/presentation/addresses/ui/addresses_screen.dart';
 import 'package:shopink/layers/presentation/home/ui/home_screen.dart';
 import 'package:shopink/layers/presentation/login/ui/login_screen.dart';
@@ -49,6 +50,11 @@ class AppRouter {
       case Routes.addressesRoute:
         return MaterialPageRoute(
           builder: (context) => const AddressesScreen(),
+        );
+
+      case Routes.addAddressRoute:
+        return MaterialPageRoute(
+          builder: (context) => const AddAddressScreen(),
         );
 
       default:

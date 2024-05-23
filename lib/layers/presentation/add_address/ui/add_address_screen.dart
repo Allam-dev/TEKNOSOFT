@@ -6,6 +6,12 @@ import 'package:gap/gap.dart';
 import 'package:shopink/core/di/dependency_injection.dart';
 import 'package:shopink/core/services/localization/locale_keys.g.dart';
 import 'package:shopink/layers/presentation/add_address/cubit/add_address_cubit.dart';
+import 'package:shopink/layers/presentation/add_address/ui/widgets/add_button.dart';
+import 'package:shopink/layers/presentation/add_address/ui/widgets/city_field.dart';
+import 'package:shopink/layers/presentation/add_address/ui/widgets/cubit_listener.dart';
+import 'package:shopink/layers/presentation/add_address/ui/widgets/governorate_field.dart';
+import 'package:shopink/layers/presentation/add_address/ui/widgets/street_field.dart';
+import 'package:shopink/layers/presentation/add_address/ui/widgets/title_field.dart';
 
 class AddAddressScreen extends StatelessWidget {
   const AddAddressScreen({super.key});
@@ -19,19 +25,24 @@ class AddAddressScreen extends StatelessWidget {
           appBar: AppBar(
             title: Text(LocaleKeys.addAddress.tr()),
           ),
-          body: SingleChildScrollView(
-            child: Form(
-              key: context.read<AddAddressCubit>().formKey,
-              child: Column(
-                children: [
-                  AddAddressTitleField(),
-                  Gap(20.h),
-                  AddAddressStreetField(),
-                  Gap(20.h),
-                  AddAddressGoverateField(),
-                  Gap(20.h),
-                  AddAddressButton(),
-                ],
+          body: AddAddressCubitListener(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+              child: Form(
+                key: context.read<AddAddressCubit>().formKey,
+                child: Column(
+                  children: [
+                    const AddAddressTitleField(),
+                    Gap(20.h),
+                    const AddAddressGovernorateField(),
+                    Gap(20.h),
+                    const AddAddressCityField(),
+                    Gap(20.h),
+                    const AddAddressStreetField(),
+                    Gap(200.h),
+                    const AddButton(),
+                  ],
+                ),
               ),
             ),
           ),

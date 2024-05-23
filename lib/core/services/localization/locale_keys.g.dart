@@ -76,5 +76,12 @@ abstract class  LocaleKeys {
   static const invalidInput = 'invalidInput';
   static const cacheError = 'cacheError';
   static const addAddress = 'addAddress';
+  static const title = 'title';
+  static const street = 'street';
+  static const city = 'city';
+  static const governorate = 'governorate';
+  static const address = 'address';
+  static const add = 'add';
+  static const edit = 'edit';
 
 }

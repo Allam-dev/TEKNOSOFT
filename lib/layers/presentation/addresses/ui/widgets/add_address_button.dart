@@ -12,8 +12,8 @@ class AddAddressButton extends StatelessWidget {
     final addressesCubit = context.read<AddressesCubit>();
     return FloatingActionButton(
       onPressed: () async {
-        bool reload = await context.pushNamed(Routes.addAddressRoute) as bool;
-        if (reload) {
+        bool? reload = await context.pushNamed(Routes.addAddressRoute) as bool?;
+        if (reload == true) {
           addressesCubit.getAddresses();
         }
       },

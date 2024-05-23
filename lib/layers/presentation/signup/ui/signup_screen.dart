@@ -30,30 +30,27 @@ class SignupScreen extends StatelessWidget {
                 title: Text(LocaleKeys.signUp.tr()),
               ),
               body: SingleChildScrollView(
-                child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-                  child: Form(
-                    key: context.read<SignupCubit>().formKey,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SignupNameField(),
-                        Gap(20.h),
-                        const SignupEmailField(),
-                        Gap(20.h),
-                        const SignupPasswordField(),
-                        Gap(30.h),
-                        const SignupPasswordValidator(),
-                        Gap(30.h),
-                        const SignupButton(),
-                        Gap(20.h),
-                        const OrDivider(),
-                        Gap(20.h),
-                        const SignupWithGoogleButton(),
-                      ],
-                    ),
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                child: Form(
+                  key: context.read<SignupCubit>().formKey,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SignupNameField(),
+                      Gap(20.h),
+                      const SignupEmailField(),
+                      Gap(20.h),
+                      const SignupPasswordField(),
+                      Gap(30.h),
+                      const SignupPasswordValidator(),
+                      Gap(30.h),
+                      const SignupButton(),
+                      Gap(20.h),
+                      const OrDivider(),
+                      Gap(20.h),
+                      const SignupWithGoogleButton(),
+                    ],
                   ),
                 ),
               ),

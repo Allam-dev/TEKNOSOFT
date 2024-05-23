@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopink/core/ui/widgets/no_products_text.dart';
 import 'package:shopink/layers/domain/entities/address.dart';
 import 'package:shopink/layers/presentation/addresses/cubit/addresses_cubit.dart';
@@ -34,6 +35,7 @@ class _SuccessState extends StatelessWidget {
       return const NoDataText();
     } else {
       return ListView.builder(
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         itemCount: _addresses.length,
         itemBuilder: (context, index) {
           final address = _addresses[index];

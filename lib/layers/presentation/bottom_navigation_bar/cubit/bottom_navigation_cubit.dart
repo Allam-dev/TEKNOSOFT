@@ -22,19 +22,19 @@ class BottomNavigationCubit extends Cubit<BottomNavigationState> {
 
   final List<BottomNavigationBarItem> bottomNavigationBarItems = const [
     BottomNavigationBarItem(
-      icon: Icon(Icons.home),
+      icon: Icon(Icons.home_rounded),
       label: 'Home',
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.shopping_cart),
+      icon: Icon(Icons.shopping_cart_rounded),
       label: 'Cart',
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.list),
+      icon: Icon(Icons.receipt_long_rounded),
       label: 'Orders',
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.settings),
+      icon: Icon(Icons.settings_rounded),
       label: 'Settings',
     ),
   ];
@@ -42,7 +42,7 @@ class BottomNavigationCubit extends Cubit<BottomNavigationState> {
   Future<void> changeIndex(int index) async {
     if (_previousIndex != index) {
       _previousIndex = index;
-       pageController.jumpToPage(index);
+      pageController.jumpToPage(index);
       emit(BottomNavigationIndex(index));
     }
   }

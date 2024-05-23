@@ -27,32 +27,29 @@ class LoginScreen extends StatelessWidget {
             child: Scaffold(
               appBar: AppBar(),
               body: SingleChildScrollView(
-                child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-                  child: Form(
-                    key: context.read<LoginCubit>().formKey,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const LoginWelcomeText(),
-                        Gap(50.h),
-                        const LoginEmailFeild(),
-                        Gap(20.h),
-                        const LoginPasswordField(),
-                        Gap(30.h),
-                        const LoginForgotPasswordText(),
-                        Gap(30.h),
-                        const LoginButton(),
-                        Gap(20.h),
-                        const OrDivider(),
-                        Gap(20.h),
-                        const LoginWithGoogleButton(),
-                        Gap(50.h),
-                        const LoginDontHaveAccountText(),
-                      ],
-                    ),
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                child: Form(
+                  key: context.read<LoginCubit>().formKey,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const LoginWelcomeText(),
+                      Gap(50.h),
+                      const LoginEmailFeild(),
+                      Gap(20.h),
+                      const LoginPasswordField(),
+                      Gap(30.h),
+                      const LoginForgotPasswordText(),
+                      Gap(30.h),
+                      const LoginButton(),
+                      Gap(20.h),
+                      const OrDivider(),
+                      Gap(20.h),
+                      const LoginWithGoogleButton(),
+                      Gap(50.h),
+                      const LoginDontHaveAccountText(),
+                    ],
                   ),
                 ),
               ),

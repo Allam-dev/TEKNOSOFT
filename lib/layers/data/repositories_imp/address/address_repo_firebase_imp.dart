@@ -23,7 +23,8 @@ class AddressRepoFirebaseImp implements AddressesRepo {
         street: address.street,
         title: address.title,
       );
-      _addressesPath.add(addressDTO.toJson());
+      await _addressesPath.add(addressDTO.toJson());
+      Log.info("Address added successfully");
       return const Right(null);
     } catch (e) {
       Log.error(e.toString());
@@ -41,11 +42,24 @@ class AddressRepoFirebaseImp implements AddressesRepo {
   Future<Either<Failure, List<AddressEntity>>> getAll() async {
     try {
       List<AddressEntity> addresses = [];
+      AddressDTO addressDTO;
       final response = await _addressesPath.get();
-      if (response.docs.isEmpty) {
-        return Right(addresses);
+      if (response.docs.isNotEmpty) {
+        for (var element in response.docs) {
+          addressDTO = AddressDTO.fromJson(element.data());
+          addresses.add(
+            AddressEntity(
+              city: addressDTO.city ?? "city",
+              governorate: addressDTO.governorate ?? "governorate",
+              street: addressDTO.street ?? "street",
+              title: addressDTO.title ?? "title",
+            ),
+          );
+        }
+        Log.info("Addresses fetched successfully");
+      } else {
+        Log.info("No addresses found");
       }
-      Log.info(response.docs.first.data().toString());
 
       return Right(addresses);
     } catch (e) {

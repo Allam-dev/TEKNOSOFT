@@ -9,7 +9,7 @@ class FiltarButton extends StatelessWidget {
     return IconButton(
       onPressed: () {
         showDialog(
-            context: context, builder: (context) => FiltrationDialog());
+            context: context, builder: (context) => const FiltrationDialog());
       },
       icon: const Icon(Icons.filter_alt),
     );

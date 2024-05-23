@@ -2,8 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopink/core/extensions/context/navigation.dart';
+import 'package:shopink/core/extensions/context/showing.dart';
 import 'package:shopink/core/routing/routes.dart';
-import 'package:shopink/core/ui/widgets/error_dialog.dart';
 import 'package:shopink/layers/presentation/signup/cubit/signup_cubit.dart';
 
 class SignupCubitListener extends StatelessWidget {
@@ -14,25 +14,16 @@ class SignupCubitListener extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<SignupCubit, SignupState>(
-      listener: (context, state) async {
+      listener: (context, state) {
         switch (state) {
-          case SignupError():
+          case SignupError _:
             context.pop();
-            await showDialog(
-                context: context,
-                builder: (context) => ErrorDialog(
-                      message: state.message.tr(),
-                    ));
+            context.showErrorDialog(message: state.message.tr());
 
-          case SignupSuccess():
+          case SignupSuccess _:
             context.pushNamedAndRemoveUntil(Routes.mainLayoutRoute);
-          case SignupLoading():
-            showDialog(
-              context: context,
-              barrierDismissible: false,
-              builder: (context) =>
-                  const Center(child: CircularProgressIndicator()),
-            );
+          case SignupLoading _:
+            context.showLoadingDialog();
           default:
             break;
         }
