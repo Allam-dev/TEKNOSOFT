@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shopink/core/errors/failure.dart';
 import 'package:shopink/core/errors/logger.dart';
-import 'package:shopink/core/extensions/double/round.dart';
+import 'package:shopink/core/extensions/double/fractions.dart';
 import 'package:shopink/layers/data/models/cart_dto.dart';
 import 'package:shopink/layers/data/models/product_dto.dart';
 import 'package:shopink/layers/data/source/remote/firebase/constants.dart';
@@ -111,8 +111,8 @@ class CartRepoFirebaseImp implements CartRepo {
           lastCartResponse.count =
               ((lastCartResponse.count ?? 0) - (element.quantityInCart ?? 0));
           lastCartResponse.price = ((lastCartResponse.price ?? 0) -
-              ((element.price ?? 0) * (element.quantityInCart ?? 0)))
-                  .roundFractions(2);
+                  ((element.price ?? 0) * (element.quantityInCart ?? 0)))
+              .roundFractions(2);
           return true;
         } else {
           return false;
@@ -158,6 +158,12 @@ class CartRepoFirebaseImp implements CartRepo {
   Future<Either<Failure, void>> addProduct(
       {required ProductEntity product}) async {
     try {
+      for (var element in lastCartResponse.products ?? []) {
+        if (element.id == product.id) {
+          final result = await incrementProduct(productId: product.id);
+          return result;
+        }
+      }
       product = product.copyWith(quantityInCart: product.quantityInCart + 1);
       ProductDTO productResponse = ProductDTO(
         id: product.id,

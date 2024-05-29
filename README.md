@@ -8,7 +8,7 @@ run `generate.sh` file from the project directory
 
 ### Bugs to fix
 
-- [ ] duplicated products in cart
+- [x] duplicated products in cart
 - [x] nigative product price in cart
 
 ### Features to add
