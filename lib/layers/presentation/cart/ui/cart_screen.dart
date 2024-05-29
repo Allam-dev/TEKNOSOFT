@@ -5,6 +5,7 @@ import 'package:shopink/core/di/dependency_injection.dart';
 import 'package:shopink/core/services/localization/locale_keys.g.dart';
 import 'package:shopink/layers/presentation/cart/cubit/cart_cubit.dart';
 import 'package:shopink/layers/presentation/cart/ui/widgets/cart_body.dart';
+import 'package:shopink/layers/presentation/cart/ui/widgets/delete_cart_button.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -13,7 +14,8 @@ class CartScreen extends StatefulWidget {
   State<CartScreen> createState() => _CartScreenState();
 }
 
-class _CartScreenState extends State<CartScreen>with AutomaticKeepAliveClientMixin {
+class _CartScreenState extends State<CartScreen>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -24,6 +26,7 @@ class _CartScreenState extends State<CartScreen>with AutomaticKeepAliveClientMix
           return Scaffold(
             appBar: AppBar(
               title: Text(LocaleKeys.cart.tr()),
+              actions: const [DeleteCartButton()],
             ),
             body: const CartBody(),
           );
@@ -31,7 +34,7 @@ class _CartScreenState extends State<CartScreen>with AutomaticKeepAliveClientMix
       ),
     );
   }
-  
+
   @override
   bool get wantKeepAlive => true;
 }

@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shopink/core/errors/failure.dart';
 import 'package:shopink/core/errors/logger.dart';
+import 'package:shopink/core/extensions/double/round.dart';
 import 'package:shopink/layers/data/models/cart_dto.dart';
 import 'package:shopink/layers/data/models/product_dto.dart';
 import 'package:shopink/layers/data/source/remote/firebase/constants.dart';
@@ -61,7 +62,7 @@ class CartRepoFirebaseImp implements CartRepo {
   }
 
   @override
-  Future<Either<Failure, void>> clearCart() async {
+  Future<Either<Failure, void>> deleteCart() async {
     try {
       await _cartPath.delete();
       Log.info("Cart cleared successfully");
@@ -81,11 +82,12 @@ class CartRepoFirebaseImp implements CartRepo {
           if (element.quantityInCart == 1) {
             lastCartResponse.products?.remove(element);
           } else {
-            element.quantityInCart = (element.quantityInCart ?? 0) + 1;
+            element.quantityInCart = (element.quantityInCart ?? 0) - 1;
           }
           lastCartResponse.count = (lastCartResponse.count ?? 0) - 1;
           lastCartResponse.price =
-              (lastCartResponse.price ?? 0) - (element.price ?? 0);
+              ((lastCartResponse.price ?? 0) - (element.price ?? 0))
+                  .roundFractions(2);
           return true;
         } else {
           return false;
@@ -107,9 +109,10 @@ class CartRepoFirebaseImp implements CartRepo {
       lastCartResponse.products?.removeWhere((element) {
         if (element.id == productId) {
           lastCartResponse.count =
-              (lastCartResponse.count ?? 0) - (element.quantityInCart ?? 0);
-          lastCartResponse.price = (lastCartResponse.price ?? 0) -
-              ((element.price ?? 0) * (element.quantityInCart ?? 0));
+              ((lastCartResponse.count ?? 0) - (element.quantityInCart ?? 0));
+          lastCartResponse.price = ((lastCartResponse.price ?? 0) -
+              ((element.price ?? 0) * (element.quantityInCart ?? 0)))
+                  .roundFractions(2);
           return true;
         } else {
           return false;
@@ -134,7 +137,8 @@ class CartRepoFirebaseImp implements CartRepo {
           element.quantityInCart = (element.quantityInCart ?? 0) + 1;
           lastCartResponse.count = (lastCartResponse.count ?? 0) + 1;
           lastCartResponse.price =
-              (lastCartResponse.price ?? 0) + (element.price ?? 0);
+              ((lastCartResponse.price ?? 0) + (element.price ?? 0))
+                  .roundFractions(2);
           return true;
         } else {
           return false;
@@ -168,8 +172,9 @@ class CartRepoFirebaseImp implements CartRepo {
 
       lastCartResponse.count =
           (lastCartResponse.count ?? 0) + product.quantityInCart;
-      lastCartResponse.price = (lastCartResponse.price ?? 0) +
-          (product.price * product.quantityInCart);
+      lastCartResponse.price = ((lastCartResponse.price ?? 0) +
+              (product.price * product.quantityInCart))
+          .roundFractions(2);
       if (lastCartResponse.products == null) {
         lastCartResponse.products = [productResponse];
       } else {

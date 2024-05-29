@@ -52,6 +52,15 @@ class CartCubit extends Cubit<CartState> {
     );
   }
 
+  Future<void> deleteCart() async {
+    emit(CartLoading());
+    final result = await cartRepo.deleteCart();
+    result.fold(
+      (failure) => emit(CartError(failure.message)),
+      (r) => null,
+    );
+  }
+
   @override
   Future<void> close() {
     cartRepo.getCart().close();

@@ -9,7 +9,7 @@ abstract interface class CartRepo {
   StreamController<Either<Failure, CartEntity>> getCart();
   Future<Either<Failure, void>> addProduct({required ProductEntity product});
   Future<Either<Failure, void>> deleteProduct({required int productId});
-  Future<Either<Failure, void>> clearCart();
+  Future<Either<Failure, void>> deleteCart();
   Future<Either<Failure, void>> incrementProduct({required int productId});
   Future<Either<Failure, void>> decrementProduct({required int productId});
 }
